@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Devraj.tech | Previous Year Papers</title>
+
+<style>
+:root{
+--primary:#2563eb;
+--dark:#0f172a;
+--light:#f8fafc;
+}
+
+body{
+margin:0;
+font-family:Segoe UI, sans-serif;
+background:var(--light);
+}
+
+header{
+background:white;
+padding:15px 5%;
+display:flex;
+justify-content:space-between;
+align-items:center;
+box-shadow:0 2px 10px rgba(0,0,0,0.1);
+}
+
+.logo{
+font-weight:bold;
+font-size:20px;
+color:var(--primary);
+}
+
+nav a{
+margin-left:20px;
+text-decoration:none;
+color:var(--dark);
+font-weight:500;
+}
+
+.hero{
+background:linear-gradient(135deg,var(--primary),#1e40af);
+color:white;
+text-align:center;
+padding:60px 20px;
+}
+
+.search-box{
+margin-top:20px;
+}
+
+.search-box input{
+padding:12px;
+width:250px;
+border:none;
+border-radius:5px;
+}
+
+.search-box button{
+padding:12px 20px;
+background:var(--dark);
+color:white;
+border:none;
+border-radius:5px;
+cursor:pointer;
+}
+
+.container{
+max-width:1100px;
+margin:auto;
+padding:40px 20px;
+}
+
+.grid{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:20px;
+}
+
+.card{
+background:white;
+padding:25px;
+border-radius:10px;
+text-align:center;
+box-shadow:0 4px 6px rgba(0,0,0,0.05);
+cursor:pointer;
+transition:0.2s;
+}
+
+.card:hover{
+transform:translateY(-5px);
+border-bottom:4px solid var(--primary);
+}
+
+.section{
+display:none;
+}
+
+.active{
+display:block;
+}
+
+footer{
+background:var(--dark);
+color:white;
+text-align:center;
+padding:20px;
+margin-top:40px;
+}
+
+@media(max-width:600px){
+.search-box input{
+width:90%;
+margin-bottom:10px;
+}
+}
+</style>
+</head>
+<body>
+
+<header>
+<div class="logo">Devraj.tech</div>
+<nav>
+<a href="#" onclick="showSection('home')">Home</a>
+<a href="#" onclick="showSection('engineering')">Engineering</a>
+<a href="#" onclick="showSection('medical')">Medical</a>
+<a href="#" onclick="showSection('school')">School</a>
+</nav>
+</header>
+
+<!-- HOME -->
+<div id="home" class="section active">
+<div class="hero">
+<h1>Master Your Exams with Past Papers</h1>
+<p>Access Previous Year Papers for Free</p>
+<div class="search-box">
+<input type="text" id="searchInput" placeholder="Search JEE, NEET, CBSE...">
+<button onclick="searchPage()">Search</button>
+</div>
+</div>
+
+<div class="container">
+<h2 style="text-align:center;">Browse Categories</h2>
+<div class="grid">
+<div class="card" onclick="showSection('engineering')">
+<h3>🎓 Engineering</h3>
+<p>JEE, GATE, University Exams</p>
+</div>
+
+<div class="card" onclick="showSection('medical')">
+<h3>🩺 Medical</h3>
+<p>NEET, AIIMS, Nursing</p>
+</div>
+
+<div class="card" onclick="showSection('school')">
+<h3>📚 School</h3>
+<p>CBSE, ICSE, State Boards</p>
+</div>
+</div>
+</div>
+</div>
+
+<!-- ENGINEERING -->
+<div id="engineering" class="section container">
+<h1>Engineering Papers</h1>
+<p>JEE Main, JEE Advanced, GATE papers coming soon...</p>
+<button onclick="showSection('home')">⬅ Back</button>
+</div>
+
+<!-- MEDICAL -->
+<div id="medical" class="section container">
+<h1>Medical Papers</h1>
+<p>NEET and AIIMS papers coming soon...</p>
+<button onclick="showSection('home')">⬅ Back</button>
+</div>
+
+<!-- SCHOOL -->
+<div id="school" class="section container">
+<h1>School Papers</h1>
+<p>CBSE, ICSE and State board papers coming soon...</p>
+<button onclick="showSection('home')">⬅ Back</button>
+</div>
+
+<footer>
+<p>© 2026 Devraj.tech | Built by Aether Devil 😈</p>
+</footer>
+
+<script>
+function showSection(sectionId){
+document.querySelectorAll('.section').forEach(sec=>{
+sec.classList.remove('active');
+});
+document.getElementById(sectionId).classList.add('active');
+window.scrollTo(0,0);
+}
+
+function searchPage(){
+let query=document.getElementById("searchInput").value.trim().toLowerCase();
+
+if(query===""){
+alert("Please enter something!");
+return;
+}
+
+if(query.includes("jee") || query.includes("gate")){
+showSection("engineering");
+}
+else if(query.includes("neet") || query.includes("aiims")){
+showSection("medical");
+}
+else if(query.includes("cbse") || query.includes("icse")){
+showSection("school");
+}
+else{
+alert("No category found yet.");
+}
+}
+</script>
+
+</body>
+</html>
